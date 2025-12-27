@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest add button calendar popover card --yes)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }
