@@ -34,27 +34,22 @@ export default async function DashboardPage({
   const workouts = await getWorkoutsByDate(date);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto max-w-2xl px-4 py-8">
       <h1 className="mb-8 text-3xl font-bold">Dashboard</h1>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="space-y-4">
-          <h2 className="text-xl font-semibold">Calendar</h2>
-          <DatePicker dateString={dateString} />
-        </div>
-
-        <div className="space-y-4 lg:px-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">
-              Workouts for {format(date, "do MMM yyyy")}
-            </h2>
-            <Button asChild>
-              <Link href="/dashboard/workout/new">
-                <Plus className="size-4" />
-                Create Workout
-              </Link>
-            </Button>
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <h2 className="text-xl font-semibold">Workouts</h2>
+            <DatePicker dateString={dateString} />
           </div>
+          <Button asChild>
+            <Link href="/dashboard/workout/new">
+              <Plus className="size-4" />
+              Create Workout
+            </Link>
+          </Button>
+        </div>
 
           {workouts.length === 0 ? (
           <Card>
@@ -125,7 +120,6 @@ export default async function DashboardPage({
             ))}
           </div>
         )}
-        </div>
       </div>
     </div>
   );

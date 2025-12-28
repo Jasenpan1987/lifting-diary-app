@@ -5,7 +5,8 @@
       "Bash(npx shadcn@latest add button calendar popover card --yes)",
       "Bash(mkdir:*)",
       "Bash(npm run build:*)",
-      "Bash(npx shadcn@latest add:*)"
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(claude --version:*)"
     ]
   }
 }

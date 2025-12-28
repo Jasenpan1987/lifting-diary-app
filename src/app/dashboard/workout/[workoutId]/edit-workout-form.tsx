@@ -104,9 +104,19 @@ export function EditWorkoutForm({ workout }: { workout: Workout }) {
         />
       </div>
 
-      <Button type="submit" className="w-full">
-        Update Workout
-      </Button>
+      <div className="flex gap-4">
+        <Button
+          type="button"
+          variant="outline"
+          className="flex-1"
+          onClick={() => router.push("/dashboard")}
+        >
+          Cancel
+        </Button>
+        <Button type="submit" className="flex-1">
+          Update Workout
+        </Button>
+      </div>
     </form>
   );
 }
