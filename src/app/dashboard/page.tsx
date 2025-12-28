@@ -1,6 +1,8 @@
 import { format } from "date-fns";
-import { Dumbbell, MapPin, Clock } from "lucide-react";
+import { Dumbbell, MapPin, Clock, Plus } from "lucide-react";
+import Link from "next/link";
 
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -42,9 +44,17 @@ export default async function DashboardPage({
         </div>
 
         <div className="space-y-4 lg:px-4">
-          <h2 className="text-xl font-semibold">
-            Workouts for {format(date, "do MMM yyyy")}
-          </h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-semibold">
+              Workouts for {format(date, "do MMM yyyy")}
+            </h2>
+            <Button asChild>
+              <Link href="/dashboard/workout/new">
+                <Plus className="size-4" />
+                Create Workout
+              </Link>
+            </Button>
+          </div>
 
           {workouts.length === 0 ? (
           <Card>
