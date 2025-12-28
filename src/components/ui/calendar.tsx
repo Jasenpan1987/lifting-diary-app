@@ -1,4 +1,4 @@
-"use client"
+  "use client"
 
 import * as React from "react"
 import {
@@ -45,7 +45,7 @@ function Calendar({
         ...formatters,
       }}
       classNames={{
-        root: cn("w-fit", defaultClassNames.root),
+        root: cn(defaultClassNames.root),
         months: cn(
           "flex gap-4 flex-col md:flex-row relative",
           defaultClassNames.months
@@ -197,7 +197,7 @@ function CalendarDayButton({
       ref={ref}
       variant="ghost"
       size="icon"
-      data-day={day.date.toLocaleDateString()}
+      data-day={day.date.toISOString().split("T")[0]}
       data-selected-single={
         modifiers.selected &&
         !modifiers.range_start &&

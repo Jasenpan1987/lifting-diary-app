@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **IMPORTANT:** Before generating any code, ALWAYS first check the `/docs` directory for relevant documentation. The docs folder contains specifications, guidelines, and context that must be followed when implementing features or making changes. This ensures consistency and adherence to project standards.
 
 - /docs/ui.md
+- /docs/data-fetching.md
 
 ## Commands
 
