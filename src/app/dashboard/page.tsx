@@ -68,8 +68,13 @@ export default async function DashboardPage({
         ) : (
           <div className="space-y-6">
             {workouts.map((workout) => (
-              <Card key={workout.id}>
-                <CardHeader>
+              <Link
+                key={workout.id}
+                href={`/dashboard/workout/${workout.id}`}
+                className="block"
+              >
+                <Card className="transition-colors hover:bg-muted/50">
+                  <CardHeader>
                   <CardTitle>{workout.name ?? "Workout"}</CardTitle>
                   <CardDescription className="flex flex-wrap gap-4">
                     {workout.location && (
@@ -115,7 +120,8 @@ export default async function DashboardPage({
                       </div>
                     ))}
                 </CardContent>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
         )}
