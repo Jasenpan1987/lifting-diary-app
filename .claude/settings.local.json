@@ -6,7 +6,9 @@
       "Bash(mkdir:*)",
       "Bash(npm run build:*)",
       "Bash(npx shadcn@latest add:*)",
-      "Bash(claude --version:*)"
+      "Bash(claude --version:*)",
+      "Bash(tree:*)",
+      "Bash(git add:*)"
     ]
   }
 }

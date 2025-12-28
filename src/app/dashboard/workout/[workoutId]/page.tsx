@@ -7,7 +7,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getWorkoutById } from "@/data/workouts";
-import { EditWorkoutForm } from "./edit-workout-form";
+import { getWorkoutExercisesWithDetails } from "@/data/workout-exercises";
+import { WorkoutTabs } from "./workout-tabs";
 
 type Params = Promise<{ workoutId: string }>;
 
@@ -19,9 +20,11 @@ export default async function EditWorkoutPage({ params }: { params: Params }) {
     notFound();
   }
 
+  const workoutExercises = await getWorkoutExercisesWithDetails(workoutId);
+
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mx-auto max-w-md">
+      <div className="mx-auto max-w-2xl">
         <Card>
           <CardHeader>
             <CardTitle>Edit Workout</CardTitle>
@@ -30,7 +33,10 @@ export default async function EditWorkoutPage({ params }: { params: Params }) {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <EditWorkoutForm workout={workout} />
+            <WorkoutTabs
+              workout={workout}
+              workoutExercises={workoutExercises}
+            />
           </CardContent>
         </Card>
       </div>
