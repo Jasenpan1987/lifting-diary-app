@@ -15,24 +15,62 @@ export default async function Home() {
     <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-zinc-100 dark:from-zinc-950 dark:to-zinc-900">
       <div className="container mx-auto px-4 py-16">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-zinc-900 dark:text-zinc-50">
-            Track Your Lifting Journey
+        <div className="relative text-center mb-24">
+          {/* Background decoration */}
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-full blur-3xl"></div>
+          </div>
+
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-zinc-900/5 dark:bg-zinc-50/10 border border-zinc-900/10 dark:border-zinc-50/20">
+            <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              Your Personal Lifting Coach
+            </span>
+          </div>
+
+          {/* Main Heading */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 text-zinc-900 dark:text-zinc-50 tracking-tight">
+            Track Your
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Lifting Journey
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-            The simple and effective way to log your workouts, track progress, and achieve your fitness goals.
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+            The simple and effective way to log your workouts, track progress,
+            and achieve your fitness goals. Built for lifters, by lifters.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <SignUpButton mode="modal">
-              <Button size="lg" className="text-lg px-8">
+              <Button size="lg" className="text-lg px-8 h-14 shadow-lg hover:shadow-xl transition-shadow">
                 Get Started Free
               </Button>
             </SignUpButton>
             <SignInButton mode="modal">
-              <Button size="lg" variant="outline" className="text-lg px-8">
+              <Button size="lg" variant="outline" className="text-lg px-8 h-14 border-2">
                 Sign In
               </Button>
             </SignInButton>
+          </div>
+
+          {/* Social Proof */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-zinc-600 dark:text-zinc-400">
+            <div className="flex items-center gap-2">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 border-2 border-white dark:border-zinc-950"></div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 border-2 border-white dark:border-zinc-950"></div>
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-orange-500 border-2 border-white dark:border-zinc-950"></div>
+              </div>
+              <span className="font-medium">Join 1000+ lifters</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl">⭐⭐⭐⭐⭐</span>
+              <span className="font-medium">Rated 5/5</span>
+            </div>
           </div>
         </div>
 
