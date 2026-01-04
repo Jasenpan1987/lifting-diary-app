@@ -8,7 +8,11 @@
       "Bash(npx shadcn@latest add:*)",
       "Bash(claude --version:*)",
       "Bash(tree:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Skill(document-skills:brand-guidelines)",
+      "Bash(npm run dev:*)",
+      "Skill(git-pushing)",
+      "Bash(bash:*)"
     ]
   }
 }
