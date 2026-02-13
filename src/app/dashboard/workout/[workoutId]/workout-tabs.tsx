@@ -29,9 +29,10 @@ type WorkoutExerciseWithDetails = {
 type WorkoutTabsProps = {
   workout: Workout;
   workoutExercises: WorkoutExerciseWithDetails[];
+  bodyWeightKg: number | null;
 };
 
-export function WorkoutTabs({ workout, workoutExercises }: WorkoutTabsProps) {
+export function WorkoutTabs({ workout, workoutExercises, bodyWeightKg }: WorkoutTabsProps) {
   return (
     <Tabs defaultValue="details">
       <TabsList className="mb-4 grid w-full grid-cols-2">
@@ -45,6 +46,7 @@ export function WorkoutTabs({ workout, workoutExercises }: WorkoutTabsProps) {
         <ExercisesTab
           workoutId={workout.id}
           workoutExercises={workoutExercises}
+          bodyWeightKg={bodyWeightKg}
         />
       </TabsContent>
     </Tabs>

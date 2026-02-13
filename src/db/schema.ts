@@ -40,6 +40,15 @@ export const sets = pgTable('sets', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
+// User profiles table
+export const userProfiles = pgTable('user_profiles', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: varchar('user_id', { length: 255 }).notNull().unique(),
+  weightKg: decimal('weight_kg', { precision: 5, scale: 1 }),
+  createdAt: timestamp('created_at').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow(),
+});
+
 // Relations for relational queries
 export const workoutsRelations = relations(workouts, ({ many }) => ({
   workoutExercises: many(workoutExercises),

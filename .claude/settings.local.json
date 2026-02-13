@@ -12,7 +12,16 @@
       "Skill(document-skills:brand-guidelines)",
       "Bash(npm run dev:*)",
       "Skill(git-pushing)",
-      "Bash(bash:*)"
+      "Bash(bash:*)",
+      "Bash(npx drizzle-kit push:*)",
+      "Bash(test:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls:*)",
+      "Bash(source:*)",
+      "Bash(npx tsx:*)",
+      "Bash(npx dotenv:*)",
+      "Bash(set:*)",
+      "Bash(node:*)"
     ]
   }
 }

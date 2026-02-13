@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Trash2, Plus } from "lucide-react";
+import { Trash2, Plus, Flame } from "lucide-react";
 import { SetItem } from "./set-item";
 import { deleteWorkoutExerciseAction, addSetAction } from "./actions";
+import { calculateSetCalories } from "@/lib/calories";
 
 type ExerciseItemProps = {
   workoutExercise: {
@@ -22,9 +23,10 @@ type ExerciseItemProps = {
       reps: number | null;
     }>;
   };
+  bodyWeightKg: number | null;
 };
 
-export function ExerciseItem({ workoutExercise }: ExerciseItemProps) {
+export function ExerciseItem({ workoutExercise, bodyWeightKg }: ExerciseItemProps) {
   const [isAddingSet, setIsAddingSet] = useState(false);
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
@@ -51,8 +53,20 @@ export function ExerciseItem({ workoutExercise }: ExerciseItemProps) {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
-        <CardTitle className="text-lg">
+        <CardTitle className="flex items-center gap-2 text-lg">
           {workoutExercise.exercise.name}
+          {bodyWeightKg && (() => {
+            const cal = workoutExercise.sets.reduce(
+              (sum, set) => sum + calculateSetCalories(set, bodyWeightKg),
+              0
+            );
+            return cal > 0 ? (
+              <span className="text-muted-foreground flex items-center gap-1 text-sm font-normal">
+                <Flame className="size-3" />
+                {Math.round(cal)} kcal
+              </span>
+            ) : null;
+          })()}
         </CardTitle>
         <Button variant="ghost" size="icon-sm" onClick={handleDeleteExercise}>
           <Trash2 className="size-4" />

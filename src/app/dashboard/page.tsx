@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { Dumbbell, MapPin, Clock, Plus } from "lucide-react";
+import { Dumbbell, MapPin, Clock, Plus, Flame } from "lucide-react";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getWorkoutsByDate } from "@/data/workouts";
+import { getUserProfile } from "@/data/user-profiles";
+import { calculateWorkoutCalories } from "@/lib/calories";
 import { DatePicker } from "./date-picker";
 
 function getTodayDateString() {
@@ -31,11 +33,24 @@ export default async function DashboardPage({
   const params = await searchParams;
   const dateString = params.date ?? getTodayDateString();
   const date = new Date(dateString + "T00:00:00");
-  const workouts = await getWorkoutsByDate(date);
+  const [workouts, profile] = await Promise.all([
+    getWorkoutsByDate(date),
+    getUserProfile(),
+  ]);
+  const bodyWeightKg = profile?.weightKg ? parseFloat(profile.weightKg) : null;
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-8">
       <h1 className="mb-8 text-3xl font-bold">Dashboard</h1>
+
+      {!bodyWeightKg && (
+        <div className="bg-muted mb-4 rounded-lg p-4 text-sm">
+          <Link href="/dashboard/settings" className="underline">
+            Set your body weight
+          </Link>{" "}
+          to see estimated calories burned per workout.
+        </div>
+      )}
 
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -85,6 +100,18 @@ export default async function DashboardPage({
                         {format(workout.completedAt, "h:mm a")}
                       </span>
                     )}
+                    {bodyWeightKg && (() => {
+                      const { totalCalories } = calculateWorkoutCalories(
+                        workout.workoutExercises,
+                        bodyWeightKg
+                      );
+                      return totalCalories > 0 ? (
+                        <span className="flex items-center gap-1">
+                          <Flame className="size-3" />
+                          {Math.round(totalCalories)} kcal
+                        </span>
+                      ) : null;
+                    })()}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">

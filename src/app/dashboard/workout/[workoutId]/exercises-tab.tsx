@@ -24,11 +24,13 @@ type WorkoutExerciseWithDetails = {
 type ExercisesTabProps = {
   workoutId: string;
   workoutExercises: WorkoutExerciseWithDetails[];
+  bodyWeightKg: number | null;
 };
 
 export function ExercisesTab({
   workoutId,
   workoutExercises,
+  bodyWeightKg,
 }: ExercisesTabProps) {
   const [isAdding, setIsAdding] = useState(false);
   const [exerciseName, setExerciseName] = useState("");
@@ -54,7 +56,7 @@ export function ExercisesTab({
         </div>
       ) : (
         workoutExercises.map((we) => (
-          <ExerciseItem key={we.id} workoutExercise={we} />
+          <ExerciseItem key={we.id} workoutExercise={we} bodyWeightKg={bodyWeightKg} />
         ))
       )}
 

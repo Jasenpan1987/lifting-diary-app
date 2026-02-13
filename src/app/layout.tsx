@@ -11,6 +11,8 @@ import {
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { Settings } from "lucide-react";
+import Link from "next/link";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -59,6 +61,11 @@ export default function RootLayout({
                 </SignUpButton>
               </SignedOut>
               <SignedIn>
+                <Button variant="ghost" size="icon" asChild>
+                  <Link href="/dashboard/settings">
+                    <Settings className="size-4" />
+                  </Link>
+                </Button>
                 <UserButton />
               </SignedIn>
             </header>

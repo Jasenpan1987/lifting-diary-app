@@ -8,6 +8,13 @@
       "when": 1766755366354,
       "tag": "0000_wide_brood",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1770975025929,
+      "tag": "0001_lame_firelord",
+      "breakpoints": true
     }
   ]
 }
