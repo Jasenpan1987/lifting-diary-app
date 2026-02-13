@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { BackButton } from "@/components/back-button";
 import { getWorkoutById } from "@/data/workouts";
 import { getWorkoutExercisesWithDetails } from "@/data/workout-exercises";
 import { getUserProfile } from "@/data/user-profiles";
@@ -36,6 +37,7 @@ export default async function EditWorkoutPage({ params }: { params: Params }) {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mx-auto max-w-2xl">
+        <BackButton />
         <Card>
           <CardHeader>
             <CardTitle>Edit Workout</CardTitle>
